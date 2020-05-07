@@ -25,6 +25,11 @@ public:
     treeNode(treeNode* left, treeNode* right);
     ~treeNode();
 
+    bool hasLeft();
+    bool hasRight();
+    treeNode * getLeft();
+    treeNode * getRight();
+    int front();
     void push_back(int x);
     void pop_back();
 };

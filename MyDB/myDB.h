@@ -1,8 +1,9 @@
 #pragma once
+#include <queue>
 #include <vector>
 #include <memory>
 
-#include "dataTree.h"
+#include "treeNode.h"
 
 #define DEFAULTSIZE 256
 
@@ -10,9 +11,11 @@ class myDB {
 private:
     int size;
     int CHARSIZE;
+    treeNode * root;
     std::vector<std::unique_ptr<char[]>> column;
-    dataTree rows;
 
+    void initTree();
+    void deleteTree();
 public:
     myDB();
     myDB(const myDB & db);

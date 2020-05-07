@@ -36,6 +36,26 @@ treeNode::~treeNode() {
     // deleteIndexList();
 }
 
+bool treeNode::hasLeft() {
+    return left != nullptr;
+}
+
+bool treeNode::hasRight() {
+    return right != nullptr;
+}
+
+treeNode* treeNode::getLeft() {
+    return left;
+}
+
+treeNode* treeNode::getRight() {
+    return right;
+}
+
+int treeNode::front() {
+    return indexList.front();
+}
+
 void treeNode::push_back(int x) {
     // IndexNode * pre = tail->prev;
     // IndexNode * node = new IndexNode(x, tail, pre);

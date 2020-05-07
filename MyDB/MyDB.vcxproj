@@ -141,10 +141,12 @@
     <ClCompile Include="dataTree.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myDB.cpp" />
+    <ClCompile Include="treeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataTree.h" />
     <ClInclude Include="myDB.h" />
+    <ClInclude Include="treeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

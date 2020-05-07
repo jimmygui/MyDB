@@ -138,7 +138,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="dataTree.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myDB.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dataTree.h" />
+    <ClInclude Include="myDB.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

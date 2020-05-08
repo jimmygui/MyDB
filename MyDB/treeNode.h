@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <algorithm>
+#include <iostream>
 
 // Abandon IndexNdoe. Use std::list instead.
 
@@ -35,7 +36,10 @@ public:
     void setRight(treeNode * node);
     int getHeight();
     void setHeight(int h);
+    void updateHeight();
     int front();
     void push_back(int x);
     void pop_back();
+    std::list<int> getIndexList();
+    void printList();
 };

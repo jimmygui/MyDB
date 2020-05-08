@@ -19,6 +19,7 @@ private:
     private:
         myDB* parent;
         treeNode * root;
+        bool collide = false;
         void initTree();
         void deleteTree();
     public:
@@ -31,6 +32,9 @@ private:
         int height(treeNode* node);
         int height_diff(treeNode* node);
         int compare(const int left, const int right);
+        int compare(const int dest, const char * target);
+        std::list<int> lookUp(const char * target);
+        void print();
 
         treeNode * RR_rotate(treeNode* parent);
         treeNode * RL_rotate(treeNode* parent);
@@ -39,7 +43,8 @@ private:
     };
 
     dataTree* rows;
-    
+
+    void createIndex();
 public:
     myDB();
     myDB(const myDB & db);
@@ -50,7 +55,7 @@ public:
     void put(const char * src);
     //void remove();
     //void update();
-    void search(const char * src);
+    void findAll(const char * src);
 
     int getSize();
     int getSize() const;
@@ -58,6 +63,8 @@ public:
     int getCharSize();
     int getCharSize() const;
     int compare(const int left, const int right);
+    int compare(const int dest, const char * target);
     int compareChar(const char* left, const char* right);
+    void printTree();
 };
 

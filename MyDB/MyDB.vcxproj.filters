@@ -27,6 +27,9 @@
     <ClCompile Include="dataTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myDB.h">
@@ -35,5 +38,12 @@
     <ClInclude Include="treeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Customers.txt" />
+    <Text Include="Country.txt" />
   </ItemGroup>
 </Project>

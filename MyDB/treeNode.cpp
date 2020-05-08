@@ -68,6 +68,17 @@ void treeNode::setHeight(int h) {
     height = h;
 }
 
+void treeNode::updateHeight() {
+    if (left != nullptr && right != nullptr)
+        setHeight(1 + std::max(left->getHeight(), right->getHeight()));
+    else if (left != nullptr)
+        setHeight(1 + left->getHeight());
+    else if (right != nullptr)
+        setHeight(1 + right->getHeight());
+    else
+        setHeight(1);
+}
+
 int treeNode::front() {
     return indexList.front();
 }
@@ -89,4 +100,15 @@ void treeNode::pop_back() {
     // delete popped;
     
     indexList.pop_back();
+}
+
+std::list<int> treeNode::getIndexList() {
+    return indexList;
+}
+
+void treeNode::printList() {
+    for (auto it=indexList.cbegin(); it != indexList.cend(); ++it) {
+        std::cout << *it << ' ';
+    }
+    std::cout << "| ";
 }

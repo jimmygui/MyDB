@@ -140,12 +140,18 @@
   <ItemGroup>
     <ClCompile Include="dataTree.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="myDB.cpp" />
     <ClCompile Include="treeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="myDB.h" />
     <ClInclude Include="treeNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Country.txt" />
+    <Text Include="Customers.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

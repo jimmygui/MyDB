@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string.h>
 #include <memory>
+#include "myDB.h"
 
 using namespace std;
 
 int main() {
-	char* s = new char[2];
-	strcpy_s(s, 2, "ab");
-	cout << s << endl;
+	myDB db;
+	db.index();
 	return 0;
 }

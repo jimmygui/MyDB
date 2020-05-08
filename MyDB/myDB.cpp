@@ -1,10 +1,10 @@
 #include "myDB.h"
 
-void myDB::initTree() {
+void myDB::dataTree::initTree() {
     root = new treeNode();
 }
 
-void myDB::deleteTree() {
+void myDB::dataTree::deleteTree() {
     std::queue<treeNode*> queue;
     queue.push(root);
     while (!queue.empty()) {
@@ -18,23 +18,29 @@ void myDB::deleteTree() {
     }
 }
 
+myDB::dataTree::dataTree() {
+    initTree();
+}
+
+myDB::dataTree::~dataTree() {
+    deleteTree();
+}
+
 myDB::myDB()
     : size(0), CHARSIZE(DEFAULTSIZE) {
-    initTree();
 }
 
 myDB::myDB(const myDB & db) 
     : size(db.getSize()), CHARSIZE(db.getCharSize()) {
-    initTree();
 }
 
 myDB::myDB(int maxL)
     : CHARSIZE(maxL) {
-    initTree();
 }
 
 myDB::~myDB() {
-    deleteTree();
+    if (rows != nullptr)
+        delete rows;
 }
 
 int myDB::getSize() {
@@ -57,10 +63,14 @@ int myDB::getCharSize() const {
     return CHARSIZE;
 }
 
+void myDB::index() {
+    rows = new dataTree();
+}
+
 void myDB::put(const char * src) {
     std::unique_ptr<char[]> s(new char[CHARSIZE]);
     strcpy_s(s.get(), CHARSIZE, src);
-    column.push_back(s);
+    column.push_back(std::move(s));
     // rows.put(size++);
 }
 

@@ -11,17 +11,28 @@ class myDB {
 private:
     int size;
     int CHARSIZE;
-    treeNode * root;
+    
     std::vector<std::unique_ptr<char[]>> column;
 
-    void initTree();
-    void deleteTree();
+    class dataTree {
+    private:
+        treeNode * root;
+        void initTree();
+        void deleteTree();
+    public:
+        dataTree();
+        ~dataTree();
+    };
+
+    dataTree* rows;
+    
 public:
     myDB();
     myDB(const myDB & db);
     myDB(int maxL);
     ~myDB();
 
+    void index();
     void put(const char * src);
     //void remove();
     //void update();

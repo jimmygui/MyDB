@@ -1,31 +1,5 @@
 #include "myDB.h"
 
-void myDB::dataTree::initTree() {
-    root = new treeNode();
-}
-
-void myDB::dataTree::deleteTree() {
-    std::queue<treeNode*> queue;
-    queue.push(root);
-    while (!queue.empty()) {
-        treeNode* t = queue.front();
-        if (t->hasLeft())
-            queue.push(t->getLeft());
-        if (t->hasRight())
-            queue.push(t->getRight());
-        delete t;
-        queue.pop();
-    }
-}
-
-myDB::dataTree::dataTree() {
-    initTree();
-}
-
-myDB::dataTree::~dataTree() {
-    deleteTree();
-}
-
 myDB::myDB()
     : size(0), CHARSIZE(DEFAULTSIZE) {
 }
@@ -64,14 +38,36 @@ int myDB::getCharSize() const {
 }
 
 void myDB::index() {
-    rows = new dataTree();
+    isIndex = true;
+    rows = new dataTree(this);
+}
+
+int myDB::compare(const int left, const int right) {
+    return compareChar(column.at(left).get(), column.at(right).get());
+}
+
+int myDB::compareChar(const char* left, const char* right) {
+    int i = 0, j = 0;
+    while (left[i] != '\0' && right[j] != '\0') {
+        if (left[i] != right[j])
+            return left[i] - right[j];
+        ++i;
+        ++j;
+    }
+    if (left[i] != '\0')
+        return 1;
+    if (right[j] != '\0')
+        return -1;
+    return 0;
 }
 
 void myDB::put(const char * src) {
     std::unique_ptr<char[]> s(new char[CHARSIZE]);
     strcpy_s(s.get(), CHARSIZE, src);
     column.push_back(std::move(s));
-    // rows.put(size++);
+    if (isIndex)
+        rows->put(size);
+    ++size;
 }
 
 void myDB::search(const char * target) {}

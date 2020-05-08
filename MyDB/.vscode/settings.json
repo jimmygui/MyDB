@@ -40,5 +40,6 @@
         "deque": "cpp",
         "list": "cpp",
         "queue": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

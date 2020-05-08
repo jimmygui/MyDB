@@ -22,14 +22,14 @@
 //     }
 // }
 
-treeNode::treeNode() {
+treeNode::treeNode()
+    : height(1) {
     // initIndexList();
 }
 
-treeNode::treeNode(treeNode* left, treeNode* right) {
-    // initIndexList();
-    this->left = left;
-    this->right = right;
+treeNode::treeNode(int index) 
+    : height(1) {
+    indexList.push_back(index);
 }
 
 treeNode::~treeNode() {
@@ -50,6 +50,22 @@ treeNode* treeNode::getLeft() {
 
 treeNode* treeNode::getRight() {
     return right;
+}
+
+void treeNode::setLeft(treeNode * node) {
+    left = node;
+}
+
+void treeNode::setRight(treeNode * node) {
+    right = node;
+}
+
+int treeNode::getHeight() {
+    return height;
+}
+
+void treeNode::setHeight(int h) {
+    height = h;
 }
 
 int treeNode::front() {

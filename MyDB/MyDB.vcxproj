@@ -144,7 +144,6 @@
     <ClCompile Include="treeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dataTree.h" />
     <ClInclude Include="myDB.h" />
     <ClInclude Include="treeNode.h" />
   </ItemGroup>

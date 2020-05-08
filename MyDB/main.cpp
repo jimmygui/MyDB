@@ -8,5 +8,6 @@ using namespace std;
 int main() {
 	myDB db;
 	db.index();
+
 	return 0;
 }

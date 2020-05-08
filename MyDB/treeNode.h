@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <algorithm>
 
 // Abandon IndexNdoe. Use std::list instead.
 
@@ -15,6 +16,7 @@ private:
     // IndexNode * head;
     // IndexNode * tail;
     std::list<int> indexList;
+    int height;
     treeNode * left;
     treeNode * right;
 
@@ -22,13 +24,17 @@ private:
     // void deleteIndexList();
 public:
     treeNode();
-    treeNode(treeNode* left, treeNode* right);
+    treeNode(int index);
     ~treeNode();
 
     bool hasLeft();
     bool hasRight();
     treeNode * getLeft();
     treeNode * getRight();
+    void setLeft(treeNode * node);
+    void setRight(treeNode * node);
+    int getHeight();
+    void setHeight(int h);
     int front();
     void push_back(int x);
     void pop_back();

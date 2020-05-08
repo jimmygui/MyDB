@@ -1,0 +1,4 @@
+﻿  pch.cpp
+  test.cpp
+myDB.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  MyDBTest.vcxproj -> E:\VS Projects\MyDB\MyDB\Debug\MyDBTest.exe

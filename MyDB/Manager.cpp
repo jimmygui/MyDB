@@ -16,6 +16,10 @@ void Manager::index() {
     db.index();
 }
 
+void Manager::insert(const char * src) {
+    db.put(src);
+}
+
 void Manager::select(const char * target) {
     db.findAll(target);
 }

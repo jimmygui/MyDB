@@ -18,11 +18,6 @@ void AVLIndexTree::deleteTree() {
     }
 }
 
-AVLIndexTree::AVLIndexTree(MyDB* p)
-    : parent(p) {
-    //initTree();
-}
-
 AVLIndexTree::AVLIndexTree(std::vector<std::unique_ptr<char[]>> * v) 
     : column(v) {
 }
@@ -164,7 +159,7 @@ TreeNode * AVLIndexTree::LR_rotate(TreeNode* parent) {
     return LL_rotate(parent);
 }
 
-std::list<int> AVLIndexTree::lookUp(const char * target) {
+std::list<int>* AVLIndexTree::lookUp(const char * target) {
     TreeNode* node = root;
     while (node != nullptr) {
         int cmp = compare(node->front(), target);
@@ -173,10 +168,9 @@ std::list<int> AVLIndexTree::lookUp(const char * target) {
         else if (cmp > 0)
             node = node->getLeft();
         else
-            return node->getIndexList();
+            return &node->getIndexList();
     }
-    std::list<int> emptyList;
-    return emptyList;
+    return nullptr;
 }
 
 void AVLIndexTree::print() {

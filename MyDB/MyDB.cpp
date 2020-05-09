@@ -1,4 +1,4 @@
-#include "AVLIndexTree.h"
+// #include "AVLIndexTree.h"
 #include "MyDB.h"
 
 MyDB::MyDB()
@@ -72,18 +72,35 @@ void MyDB::put(const char * src) {
     ++size;
 }
 
-void MyDB::findAll(const char * target) {
-    std::list<int> tempList;
-    if (isIndex) {
-        tempList = rows->lookUp(target);
+std::list<int>* MyDB::getListByLinear(const char * target) {
+    std::list<int> * tempList = new std::list<int>();
+    for (int i=0; i<size; ++i) {
+        if (strcmp(column.at(i).get(), target) == 0) {
+            tempList->push_back(i);
+        }
     }
-    if (!tempList.empty()) {
+    return tempList;
+}
+
+std::list<int>* MyDB::getListByIndex(const char * target) {
+    return rows->lookUp(target);
+}
+
+void MyDB::printList(const std::list<int>* inList) {
+    if (!inList->empty()) {
         std::cout << "Matched Items at index: " << std::endl;
-        for (auto it=tempList.cbegin(); it != tempList.cend(); ++it) {
+        for (auto it=inList->cbegin(); it != inList->cend(); ++it) {
             std::cout << *it << ' ';
         }
     }
-    else
+    else {
         std::cout << "No matched items found" << std::endl;
+    }
+    if (!isIndex) delete inList;
+}
 
+void MyDB::findAll(const char * target) {
+    const std::list<int>* tempList = 
+        (isIndex) ? getListByIndex(target) : getListByLinear(target);
+    printList(tempList);
 }

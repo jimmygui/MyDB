@@ -13,5 +13,6 @@ public:
 
     void readInputFile(const char * filename);
     void index();
+    void insert(const char * src);
     void select(const char * target);
 };

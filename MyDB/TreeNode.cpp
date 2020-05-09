@@ -102,7 +102,7 @@ void TreeNode::pop_back() {
     indexList.pop_back();
 }
 
-std::list<int> TreeNode::getIndexList() {
+std::list<int>& TreeNode::getIndexList() {
     return indexList;
 }
 

@@ -40,6 +40,6 @@ public:
     int front();
     void push_back(int x);
     void pop_back();
-    std::list<int> getIndexList();
+    std::list<int>& getIndexList();
     void printList();
 };

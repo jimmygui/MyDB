@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 #include <fstream>
-#include "myDB.h"
+#include "MyDB.h"
 
 class Manager
 {
 private:
-    myDB db;
+    MyDB db;
 public:
     Manager();
     ~Manager();

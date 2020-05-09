@@ -12,28 +12,28 @@
 //     IndexNode(int i, IndexNode * next = nullptr, IndexNode * prev = nullptr);
 // };
 
-class treeNode {
+class TreeNode {
 private:
     // IndexNode * head;
     // IndexNode * tail;
     std::list<int> indexList;
     int height;
-    treeNode * left;
-    treeNode * right;
+    TreeNode * left;
+    TreeNode * right;
 
     // void initIndexList();
     // void deleteIndexList();
 public:
-    treeNode();
-    treeNode(int index);
-    ~treeNode();
+    TreeNode();
+    TreeNode(int index);
+    ~TreeNode();
 
     bool hasLeft();
     bool hasRight();
-    treeNode * getLeft();
-    treeNode * getRight();
-    void setLeft(treeNode * node);
-    void setRight(treeNode * node);
+    TreeNode * getLeft();
+    TreeNode * getRight();
+    void setLeft(TreeNode * node);
+    void setRight(TreeNode * node);
     int getHeight();
     void setHeight(int h);
     void updateHeight();

@@ -1,4 +1,4 @@
-#include "treeNode.h"
+#include "TreeNode.h"
 
 // IndexNode::IndexNode(int i, IndexNode * next = nullptr, IndexNode * prev = nullptr) {
 //     index = i;
@@ -6,14 +6,14 @@
 //     this->prev = prev;
 // }
 
-// void treeNode::initIndexList() {
+// void TreeNode::initIndexList() {
 //     head = new IndexNode(-1);
 //     tail = new IndexNode(-1);
 //     head->next = tail;
 //     tail->prev = head;
 // }
 
-// void treeNode::deleteIndexList() {
+// void TreeNode::deleteIndexList() {
 //     IndexNode * curr = head;
 //     while (curr != nullptr) {
 //         IndexNode * temp = curr->next;
@@ -22,53 +22,53 @@
 //     }
 // }
 
-treeNode::treeNode()
+TreeNode::TreeNode()
     : height(1) {
     // initIndexList();
 }
 
-treeNode::treeNode(int index) 
+TreeNode::TreeNode(int index) 
     : height(1) {
     indexList.push_back(index);
 }
 
-treeNode::~treeNode() {
+TreeNode::~TreeNode() {
     // deleteIndexList();
 }
 
-bool treeNode::hasLeft() {
+bool TreeNode::hasLeft() {
     return left != nullptr;
 }
 
-bool treeNode::hasRight() {
+bool TreeNode::hasRight() {
     return right != nullptr;
 }
 
-treeNode* treeNode::getLeft() {
+TreeNode* TreeNode::getLeft() {
     return left;
 }
 
-treeNode* treeNode::getRight() {
+TreeNode* TreeNode::getRight() {
     return right;
 }
 
-void treeNode::setLeft(treeNode * node) {
+void TreeNode::setLeft(TreeNode * node) {
     left = node;
 }
 
-void treeNode::setRight(treeNode * node) {
+void TreeNode::setRight(TreeNode * node) {
     right = node;
 }
 
-int treeNode::getHeight() {
+int TreeNode::getHeight() {
     return height;
 }
 
-void treeNode::setHeight(int h) {
+void TreeNode::setHeight(int h) {
     height = h;
 }
 
-void treeNode::updateHeight() {
+void TreeNode::updateHeight() {
     if (left != nullptr && right != nullptr)
         setHeight(1 + std::max(left->getHeight(), right->getHeight()));
     else if (left != nullptr)
@@ -79,11 +79,11 @@ void treeNode::updateHeight() {
         setHeight(1);
 }
 
-int treeNode::front() {
+int TreeNode::front() {
     return indexList.front();
 }
 
-void treeNode::push_back(int x) {
+void TreeNode::push_back(int x) {
     // IndexNode * pre = tail->prev;
     // IndexNode * node = new IndexNode(x, tail, pre);
     // pre->next = node;
@@ -92,7 +92,7 @@ void treeNode::push_back(int x) {
     indexList.push_back(x);
 }
 
-void treeNode::pop_back() {
+void TreeNode::pop_back() {
     // IndexNode * popped = tail->prev;
     // IndexNode * prev = popped->prev;
     // prev->next = tail;
@@ -102,11 +102,11 @@ void treeNode::pop_back() {
     indexList.pop_back();
 }
 
-std::list<int> treeNode::getIndexList() {
+std::list<int> TreeNode::getIndexList() {
     return indexList;
 }
 
-void treeNode::printList() {
+void TreeNode::printList() {
     for (auto it=indexList.cbegin(); it != indexList.cend(); ++it) {
         std::cout << *it << ' ';
     }

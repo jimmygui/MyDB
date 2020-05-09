@@ -3,53 +3,24 @@
 #include <vector>
 #include <memory>
 
-#include "treeNode.h"
+#include "AVLIndexTree.h"
 
 #define DEFAULTSIZE 256
 
-class myDB {
+class MyDB {
 private:
     int size;
     int CHARSIZE;
     bool isIndex = false;
     
     std::vector<std::unique_ptr<char[]>> column;
-
-    class dataTree {
-    private:
-        myDB* parent;
-        treeNode * root;
-        bool collide = false;
-        void initTree();
-        void deleteTree();
-    public:
-        dataTree(myDB* p);
-        ~dataTree();
-
-        void put(const int index);
-        treeNode * insert(const int index, treeNode* node);
-        treeNode * balance(treeNode* node);
-        int height(treeNode* node);
-        int height_diff(treeNode* node);
-        int compare(const int left, const int right);
-        int compare(const int dest, const char * target);
-        std::list<int> lookUp(const char * target);
-        void print();
-
-        treeNode * RR_rotate(treeNode* parent);
-        treeNode * RL_rotate(treeNode* parent);
-        treeNode * LL_rotate(treeNode* parent);
-        treeNode * LR_rotate(treeNode* parent);
-    };
-
-    dataTree* rows;
+    AVLIndexTree* rows = nullptr;
 
     void createIndex();
 public:
-    myDB();
-    myDB(const myDB & db);
-    myDB(int maxL);
-    ~myDB();
+    MyDB();
+    MyDB(int maxL);
+    ~MyDB();
 
     void index();
     void put(const char * src);

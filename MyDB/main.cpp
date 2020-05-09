@@ -40,10 +40,12 @@ int main() {
 	// db.findAll("a");
 
 	Manager dbms;
+	// select * from Customers where Country = 'USA';
 	// dbms.readInputFile("Country.txt");
 	// dbms.index();
 	// dbms.select("USA");
 
+	// select * from Orders where OrderLineNumber = '2';
 	dbms.readInputFile("OrderLineNumber.txt");
 	dbms.index();
 	dbms.select("2");

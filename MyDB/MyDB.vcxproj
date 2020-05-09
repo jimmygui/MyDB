@@ -138,16 +138,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dataTree.cpp" />
+    <ClCompile Include="AVLIndexTree.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
-    <ClCompile Include="myDB.cpp" />
-    <ClCompile Include="treeNode.cpp" />
+    <ClCompile Include="MyDB.cpp" />
+    <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AVLIndexTree.h" />
     <ClInclude Include="Manager.h" />
-    <ClInclude Include="myDB.h" />
-    <ClInclude Include="treeNode.h" />
+    <ClInclude Include="MyDB.h" />
+    <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Country.txt" />

@@ -1,66 +1,62 @@
-#include "myDB.h"
+#include "MyDB.h"
 
-myDB::myDB()
+MyDB::MyDB()
     : size(0), CHARSIZE(DEFAULTSIZE) {
-    // std::cout << "Construct a myDB" << std::endl;
+    // std::cout << "Construct a MyDB" << std::endl;
 }
 
-myDB::myDB(const myDB & db) 
-    : size(db.getSize()), CHARSIZE(db.getCharSize()) {
-}
-
-myDB::myDB(int maxL)
+MyDB::MyDB(int maxL)
     : CHARSIZE(maxL) {
 }
 
-myDB::~myDB() {
+MyDB::~MyDB() {
     if (rows != nullptr)
         delete rows;
 }
 
-int myDB::getSize() {
+int MyDB::getSize() {
     return size;
 }
 
-int myDB::getSize() const {
+int MyDB::getSize() const {
     return size;
 }
 
-void myDB::setSize(int n) {
+void MyDB::setSize(int n) {
     size = n;
 }
 
-int myDB::getCharSize() {
+int MyDB::getCharSize() {
     return CHARSIZE;
 }
 
-int myDB::getCharSize() const {
+int MyDB::getCharSize() const {
     return CHARSIZE;
 }
 
-void myDB::createIndex() {
+void MyDB::createIndex() {
     for (int i=0; i<size; ++i) {
         rows->put(i);
     }
 }
 
-void myDB::index() {
+void MyDB::index() {
     isIndex = true;
-    rows = new dataTree(this);
+    rows = new AVLIndexTree(this);
     if (size > 0) {
         createIndex();
     }
 }
 
-int myDB::compare(const int left, const int right) {
+int MyDB::compare(const int left, const int right) {
     return compareChar(column.at(left).get(), column.at(right).get());
 }
 
-int myDB::compare(const int dest, const char * target) {
+int MyDB::compare(const int dest, const char * target) {
     return compareChar(column.at(dest).get(), target);
 }
 
-int myDB::compareChar(const char* left, const char* right) {
+int MyDB::compareChar(const char* left, const char* right) {
     // Manual Compare
     // int i = 0, j = 0;
     // while (left[i] != '\0' && right[j] != '\0') {
@@ -80,14 +76,14 @@ int myDB::compareChar(const char* left, const char* right) {
     return strcmp(left, right);
 }
 
-void myDB::printTree() {
+void MyDB::printTree() {
     if (!isIndex)
         return ;
     // std::cout << "Called: printTree" << std::endl;
     rows->print();
 }
 
-void myDB::put(const char * src) {
+void MyDB::put(const char * src) {
     // std::cout << "Constructing unique_ptr for: " << src << std::endl;
     std::unique_ptr<char[]> s(new char[CHARSIZE]);
     strcpy_s(s.get(), CHARSIZE, src);
@@ -102,7 +98,7 @@ void myDB::put(const char * src) {
     ++size;
 }
 
-void myDB::findAll(const char * target) {
+void MyDB::findAll(const char * target) {
     std::list<int> tempList;
     if (isIndex) {
         tempList = rows->lookUp(target);

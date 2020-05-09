@@ -11,8 +11,7 @@ private:
     bool collide = false;
     TreeNode * root;
     std::vector<std::unique_ptr<char[]>> * column;
-
-    void initTree();
+    
     void deleteTree();
     int height(TreeNode* node);
     int height_diff(TreeNode* node);

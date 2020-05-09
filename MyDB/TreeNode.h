@@ -24,7 +24,6 @@ private:
     // void initIndexList();
     // void deleteIndexList();
 public:
-    TreeNode();
     TreeNode(int index);
     ~TreeNode();
 

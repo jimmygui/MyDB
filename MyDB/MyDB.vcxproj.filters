@@ -30,6 +30,12 @@
     <ClCompile Include="MyDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RBTreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RBIndexTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager.h">
@@ -42,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyDB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RBIndexTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

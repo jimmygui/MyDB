@@ -1,9 +1,5 @@
 #include "AVLIndexTree.h"
 
-void AVLIndexTree::initTree() {
-    root = new TreeNode();
-}
-
 void AVLIndexTree::deleteTree() {
     std::queue<TreeNode*> queue;
     queue.push(root);

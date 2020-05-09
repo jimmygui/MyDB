@@ -22,11 +22,6 @@
 //     }
 // }
 
-TreeNode::TreeNode()
-    : height(1) {
-    // initIndexList();
-}
-
 TreeNode::TreeNode(int index) 
     : height(1) {
     indexList.push_back(index);

@@ -142,12 +142,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="MyDB.cpp" />
+    <ClCompile Include="RBIndexTree.cpp" />
+    <ClCompile Include="RBTreeNode.cpp" />
     <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVLIndexTree.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MyDB.h" />
+    <ClInclude Include="RBIndexTree.h" />
+    <ClInclude Include="RBTreeNode.h" />
     <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <ItemGroup>

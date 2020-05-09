@@ -23,6 +23,10 @@ AVLIndexTree::AVLIndexTree(MyDB* p)
     //initTree();
 }
 
+AVLIndexTree::AVLIndexTree(std::vector<std::unique_ptr<char[]>> * v) 
+    : column(v) {
+}
+
 AVLIndexTree::~AVLIndexTree() {
     deleteTree();
 }
@@ -37,11 +41,31 @@ int AVLIndexTree::height_diff(TreeNode* node) {
 }
 
 int AVLIndexTree::compare(const int left, const int right) {
-    return parent->compare(left, right);
+    return compareChar(column->at(left).get(), column->at(right).get());
 }
 
 int AVLIndexTree::compare(const int dest, const char * target) {
-    return parent->compare(dest, target);
+    return compareChar(column->at(dest).get(), target);
+}
+
+int AVLIndexTree::compareChar(const char* left, const char* right) {
+    // Manual Compare
+    // int i = 0, j = 0;
+    // while (left[i] != '\0' && right[j] != '\0') {
+    //     if (left[i] != right[j])
+    //         return left[i] - right[j];
+    //     ++i;
+    //     ++j;
+    // }
+    // if (left[i] != '\0')
+    //     return 1;
+    // if (right[j] != '\0')
+    //     return -1;
+    // return 0;
+
+    // Build-in compare
+    // std::cout << "Comparing: " << left << ", " << right << std::endl;
+    return strcmp(left, right);
 }
 
 void AVLIndexTree::put(const int index) {

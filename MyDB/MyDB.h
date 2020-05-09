@@ -3,9 +3,9 @@
 #include <vector>
 #include <memory>
 
-#include "AVLIndexTree.h"
-
 #define DEFAULTSIZE 256
+
+class AVLIndexTree;
 
 class MyDB {
 private:
@@ -14,7 +14,7 @@ private:
     bool isIndex = false;
     
     std::vector<std::unique_ptr<char[]>> column;
-    AVLIndexTree* rows = nullptr;
+    AVLIndexTree* rows;
 
     void createIndex();
 public:
@@ -33,9 +33,6 @@ public:
     void setSize(int n);
     int getCharSize();
     int getCharSize() const;
-    int compare(const int left, const int right);
-    int compare(const int dest, const char * target);
-    int compareChar(const char* left, const char* right);
     void printTree();
 };
 

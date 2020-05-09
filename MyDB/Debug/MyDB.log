@@ -1,8 +1,8 @@
-﻿  dataTree.cpp
+﻿  AVLIndexTree.cpp
   main.cpp
 E:\VS Projects\MyDB\MyDB\main.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
   Manager.cpp
-  myDB.cpp
-  treeNode.cpp
+  MyDB.cpp
+  TreeNode.cpp
   Generating Code...
   MyDB.vcxproj -> E:\VS Projects\MyDB\MyDB\Debug\MyDB.exe

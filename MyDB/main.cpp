@@ -1,16 +1,15 @@
 #include <iostream>
-#include <string.h>
 #include <memory>
-#include "myDB.h"
+#include "MyDB.h"
 #include "Manager.h"
 
 #define CRTDBG_MAP_ALLOC  
 #include <stdlib.h>  
 #include <crtdbg.h>  
-//在入口函数中包含 _CrtDumpMemoryLeaks();  
+//在入口函数中包含 _CrtDumpMemoryLeaks();
 //即可检测到内存泄露
 
-//定义函数：
+//定义函数:
 inline void EnableMemLeakCheck()
 {
     _CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);

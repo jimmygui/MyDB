@@ -1,3 +1,4 @@
+#include "AVLIndexTree.h"
 #include "MyDB.h"
 
 MyDB::MyDB()
@@ -42,38 +43,11 @@ void MyDB::createIndex() {
 
 void MyDB::index() {
     isIndex = true;
-    rows = new AVLIndexTree(this);
+    // rows = new AVLIndexTree(this);
+    rows = new AVLIndexTree(&column);
     if (size > 0) {
         createIndex();
     }
-}
-
-int MyDB::compare(const int left, const int right) {
-    return compareChar(column.at(left).get(), column.at(right).get());
-}
-
-int MyDB::compare(const int dest, const char * target) {
-    return compareChar(column.at(dest).get(), target);
-}
-
-int MyDB::compareChar(const char* left, const char* right) {
-    // Manual Compare
-    // int i = 0, j = 0;
-    // while (left[i] != '\0' && right[j] != '\0') {
-    //     if (left[i] != right[j])
-    //         return left[i] - right[j];
-    //     ++i;
-    //     ++j;
-    // }
-    // if (left[i] != '\0')
-    //     return 1;
-    // if (right[j] != '\0')
-    //     return -1;
-    // return 0;
-
-    // Build-in compare
-    // std::cout << "Comparing: " << left << ", " << right << std::endl;
-    return strcmp(left, right);
 }
 
 void MyDB::printTree() {
@@ -109,5 +83,7 @@ void MyDB::findAll(const char * target) {
             std::cout << *it << ' ';
         }
     }
+    else
+        std::cout << "No matched items found" << std::endl;
 
 }

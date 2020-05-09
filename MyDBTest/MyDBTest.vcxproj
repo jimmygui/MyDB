@@ -70,7 +70,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>../MyDB/Debug/myDB.obj;../MyDB/Debug/dataTree.obj;../MyDB/Debug/treeNode.obj;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../MyDB/Debug/MyDB.obj;../MyDB/Debug/AVLIndexTree.obj;../MyDB/Debug/TreeNode.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

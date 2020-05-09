@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "../MyDB/myDB.h"
+#include "../MyDB/MyDB.h"
 
 TEST(TestCompareChar, HandleSameLengthChar) {
-    myDB* db = new myDB();
+    MyDB* db = new MyDB();
     EXPECT_EQ(db->compareChar("a", "a"), 0);
     EXPECT_EQ(db->compareChar("bc", "bc"), 0);
     EXPECT_EQ(db->compareChar("defg", "defg"), 0);
@@ -13,7 +13,7 @@ TEST(TestCompareChar, HandleSameLengthChar) {
 }
 
 TEST(testCompareChar, HandleDiffLengthChar) {
-    myDB* db = new myDB();
+    MyDB* db = new MyDB();
     EXPECT_TRUE(db->compareChar("a", "ab") < 0);
     EXPECT_TRUE(db->compareChar("abc", "abcd") < 0);
     EXPECT_TRUE(db->compareChar("abce", "abd") < 0);

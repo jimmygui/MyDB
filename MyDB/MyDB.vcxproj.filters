@@ -30,10 +30,7 @@
     <ClCompile Include="MyDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RBTreeNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RBIndexTree.cpp">
+    <ClCompile Include="SortIndex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,16 +41,13 @@
     <ClInclude Include="AVLIndexTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TreeNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MyDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RBTreeNode.h">
+    <ClInclude Include="TreeNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RBIndexTree.h">
+    <ClInclude Include="SortIndex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

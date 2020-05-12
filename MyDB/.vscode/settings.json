@@ -51,7 +51,8 @@
         "xlocmon": "cpp",
         "xloctime": "cpp",
         "xtree": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "chrono": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

@@ -2,7 +2,8 @@
 
 void AVLIndexTree::deleteTree() {
     std::queue<TreeNode*> queue;
-    queue.push(root);
+    if (root != nullptr)
+        queue.push(root);
     while (!queue.empty()) {
         TreeNode* t = queue.front();
         if (t->hasLeft())
@@ -31,11 +32,11 @@ int AVLIndexTree::height_diff(TreeNode* node) {
     return height(node->getLeft()) - height(node->getRight());
 }
 
-int AVLIndexTree::compare(const int left, const int right) {
+int AVLIndexTree::compare(const size_t left, const size_t right) {
     return compareChar(column->at(left).get(), column->at(right).get());
 }
 
-int AVLIndexTree::compare(const int dest, const char * target) {
+int AVLIndexTree::compare(const size_t dest, const char * target) {
     return compareChar(column->at(dest).get(), target);
 }
 
@@ -59,12 +60,12 @@ int AVLIndexTree::compareChar(const char* left, const char* right) {
     return strcmp(left, right);
 }
 
-void AVLIndexTree::put(const int index) {
+void AVLIndexTree::put(const size_t index) {
     collide = false;
     root = insert(index, root);
 }
 
-TreeNode * AVLIndexTree::insert(const int index, TreeNode* node) {
+TreeNode * AVLIndexTree::insert(const size_t index, TreeNode* node) {
     if (node == nullptr)
         return new TreeNode(index);
     int cmp = compare(index, node->front());
@@ -155,7 +156,7 @@ TreeNode * AVLIndexTree::LR_rotate(TreeNode* parent) {
     return LL_rotate(parent);
 }
 
-std::list<int>* AVLIndexTree::lookUp(const char * target) {
+std::vector<size_t>* AVLIndexTree::lookUp(const char * target) {
     TreeNode* node = root;
     while (node != nullptr) {
         int cmp = compare(node->front(), target);
@@ -164,9 +165,9 @@ std::list<int>* AVLIndexTree::lookUp(const char * target) {
         else if (cmp > 0)
             node = node->getLeft();
         else
-            return &node->getIndexList();
+            return node->getIndexList();
     }
-    return nullptr;
+    return new std::vector<size_t>();
 }
 
 void AVLIndexTree::print() {
@@ -174,8 +175,8 @@ void AVLIndexTree::print() {
     std::queue<TreeNode*> queue;
     queue.push(root);
     while (!queue.empty()) {
-        int size = queue.size();
-        for (int i=0; i<size; ++i) {
+        size_t size = queue.size();
+        for (size_t i=0; i<size; ++i) {
             TreeNode* node = queue.front();
             queue.pop();
             if (node->hasLeft())

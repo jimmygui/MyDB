@@ -11,7 +11,7 @@
 
 class MyDB {
 private:
-    int size;
+    size_t size;
     int CHARSIZE;
     bool isIndex = false;
     
@@ -19,9 +19,8 @@ private:
     AVLIndexTree* rows;
 
     void createIndex();
-    std::list<int>* getListByLinear(const char * target);
-    std::list<int>* getListByIndex(const char * target);
-    void printList(const std::list<int>* inList);
+    std::vector<size_t>* getListByLinear(const char * target);
+    std::vector<size_t>* getListByIndex(const char * target);
 
 public:
     MyDB();
@@ -30,11 +29,12 @@ public:
 
     void index();
     void put(const char * src);
-    void findAll(const char * target);
+    const std::vector<size_t>* findAll(const char * target);
+    void print(const std::vector<size_t>* inList);
 
-    int getSize();
-    int getSize() const;
-    void setSize(int n);
+    size_t getSize();
+    size_t getSize() const;
+    void setSize(size_t n);
     int getCharSize();
     int getCharSize() const;
     void printTree();

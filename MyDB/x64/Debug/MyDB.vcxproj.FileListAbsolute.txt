@@ -1,0 +1,2 @@
+E:\VS Projects\MyDB\MyDB\x64\Debug\MyDB.exe
+E:\VS Projects\MyDB\MyDB\x64\Debug\MyDB.pdb

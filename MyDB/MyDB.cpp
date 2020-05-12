@@ -15,15 +15,15 @@ MyDB::~MyDB() {
         delete rows;
 }
 
-int MyDB::getSize() {
+size_t MyDB::getSize() {
     return size;
 }
 
-int MyDB::getSize() const {
+size_t MyDB::getSize() const {
     return size;
 }
 
-void MyDB::setSize(int n) {
+void MyDB::setSize(size_t n) {
     size = n;
 }
 
@@ -36,7 +36,7 @@ int MyDB::getCharSize() const {
 }
 
 void MyDB::createIndex() {
-    for (int i=0; i<size; ++i) {
+    for (size_t i=0; i<size; ++i) {
         rows->put(i);
     }
 }
@@ -72,9 +72,9 @@ void MyDB::put(const char * src) {
     ++size;
 }
 
-std::list<int>* MyDB::getListByLinear(const char * target) {
-    std::list<int> * tempList = new std::list<int>();
-    for (int i=0; i<size; ++i) {
+std::vector<size_t>* MyDB::getListByLinear(const char * target) {
+    std::vector<size_t> * tempList = new std::vector<size_t>();
+    for (size_t i=0; i<size; ++i) {
         if (strcmp(column.at(i).get(), target) == 0) {
             tempList->push_back(i);
         }
@@ -82,25 +82,25 @@ std::list<int>* MyDB::getListByLinear(const char * target) {
     return tempList;
 }
 
-std::list<int>* MyDB::getListByIndex(const char * target) {
+std::vector<size_t>* MyDB::getListByIndex(const char * target) {
     return rows->lookUp(target);
 }
 
-void MyDB::printList(const std::list<int>* inList) {
+const std::vector<size_t>* MyDB::findAll(const char * target) {
+    return (isIndex) ? getListByIndex(target) : getListByLinear(target);
+}
+
+void MyDB::print(const std::vector<size_t>* inList) {
     if (!inList->empty()) {
         std::cout << "Matched Items at index: " << std::endl;
         for (auto it=inList->cbegin(); it != inList->cend(); ++it) {
             std::cout << *it << ' ';
         }
+        std::cout << std::endl;
     }
     else {
+        delete inList;
         std::cout << "No matched items found" << std::endl;
     }
     if (!isIndex) delete inList;
-}
-
-void MyDB::findAll(const char * target) {
-    const std::list<int>* tempList = 
-        (isIndex) ? getListByIndex(target) : getListByLinear(target);
-    printList(tempList);
 }

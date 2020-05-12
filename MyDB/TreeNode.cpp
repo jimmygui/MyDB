@@ -22,7 +22,7 @@
 //     }
 // }
 
-TreeNode::TreeNode(int index) 
+TreeNode::TreeNode(size_t index) 
     : height(1) {
     indexList.push_back(index);
 }
@@ -74,11 +74,11 @@ void TreeNode::updateHeight() {
         setHeight(1);
 }
 
-int TreeNode::front() {
+size_t TreeNode::front() {
     return indexList.front();
 }
 
-void TreeNode::push_back(int x) {
+void TreeNode::push_back(size_t x) {
     // IndexNode * pre = tail->prev;
     // IndexNode * node = new IndexNode(x, tail, pre);
     // pre->next = node;
@@ -97,8 +97,8 @@ void TreeNode::pop_back() {
     indexList.pop_back();
 }
 
-std::list<int>& TreeNode::getIndexList() {
-    return indexList;
+std::vector<size_t> * TreeNode::getIndexList() {
+    return &indexList;
 }
 
 void TreeNode::printList() {

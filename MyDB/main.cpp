@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <chrono>
 #include "MyDB.h"
 #include "Manager.h"
 
@@ -18,8 +19,47 @@ inline void EnableMemLeakCheck()
 
 using namespace std;
 
+void printElapsedTimeForRead(Manager* m, void (Manager::*pRead)(const char*), const char* filename) {
+	cout << "Start Reading Input..." << endl;
+	auto start = chrono::steady_clock::now();
+	(m->*pRead)(filename);
+	auto end = chrono::steady_clock::now();
+	cout << "Read Complete Successfully. Time Elapsed: "
+		<< chrono::duration_cast<chrono::milliseconds>(end - start).count()
+		<< " [ms]" << endl;
+}
+
+void printElapsedTimeForIndex(Manager* m, void (Manager::*pIndex)()) {
+	cout << "Start Constructing Index..." << endl;
+	auto start = chrono::steady_clock::now();
+	(m->*pIndex)();
+	auto end = chrono::steady_clock::now();
+	cout << "Construction Complete Successfully. Time Elapsed: " 
+		<< chrono::duration_cast<chrono::milliseconds>(end - start).count() 
+		<< " [ms]" << endl;
+}
+
+void printElapsedTimeForSelect(Manager* m, const std::vector<size_t>* (Manager::*pSelect)(const char*), const char* target) {
+	cout << "Start Searching Target..." << endl;
+	auto start = chrono::steady_clock::now();
+	const std::vector<size_t>* v = (m->*pSelect)(target);
+	auto end = chrono::steady_clock::now();
+
+	cout << "\nSearch Complete Successfully. Time Elapsed: " 
+		<< chrono::duration_cast<chrono::nanoseconds>(end - start).count() 
+		<< " [ns]" << endl;
+
+	cout << "Start Printing Data:" << endl;
+	auto starti = chrono::steady_clock::now();
+	m->print(v);
+	auto endi = chrono::steady_clock::now();
+	cout << "Print Complete. Time Elapsed: " 
+		<< chrono::duration_cast<chrono::nanoseconds>(end - start).count() 
+		<< " [ns]" << endl;
+}
+
 int main() {
-	EnableMemLeakCheck();
+	// EnableMemLeakCheck();
 	// myDB db;
 	// db.index();
 	// db.put("a");
@@ -38,15 +78,20 @@ int main() {
 	// cout << "Search: a" << endl;
 	// db.findAll("a");
 
-	Manager dbms;
+	Manager dbms(50);
 	// select * from Customers where Country = 'USA';
 	// dbms.readInputFile("Country.txt");
-	// dbms.index();
-	// dbms.select("USA");
+	// printElapsedTimeForIndex(&dbms, &(Manager::index));
+	// printElapsedTimeForSelect(&dbms, &(Manager::select), "USA");
 
 	// select * from Orders where OrderLineNumber = '2';
-	dbms.readInputFile("OrderLineNumber.txt");
-	dbms.index();
-	dbms.select("2");
+	// dbms.readInputFile("OrderLineNumber.txt");
+	// printElapsedTimeForIndex(&dbms, &(Manager::index));
+	// printElapsedTimeForSelect(&dbms, &(Manager::select), "2");
+
+	printElapsedTimeForRead(&dbms, &(Manager::readInputFile), "RandomString.txt");
+	printElapsedTimeForIndex(&dbms, &(Manager::index));
+	printElapsedTimeForSelect(&dbms, &(Manager::select), "momo");
+	
 	return 0;
 }

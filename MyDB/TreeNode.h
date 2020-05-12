@@ -1,9 +1,9 @@
 #pragma once
-#include <list>
+#include <vector>
 #include <algorithm>
 #include <iostream>
 
-// Abandon IndexNdoe. Use std::list instead.
+// Abandon IndexNdoe. Use std::vector instead.
 
 // struct IndexNode {
 //     int index;
@@ -16,7 +16,7 @@ class TreeNode {
 private:
     // IndexNode * head;
     // IndexNode * tail;
-    std::list<int> indexList;
+    std::vector<size_t> indexList;
     int height;
     TreeNode * left;
     TreeNode * right;
@@ -24,7 +24,7 @@ private:
     // void initIndexList();
     // void deleteIndexList();
 public:
-    TreeNode(int index);
+    TreeNode(size_t index);
     ~TreeNode();
 
     bool hasLeft();
@@ -36,9 +36,9 @@ public:
     int getHeight();
     void setHeight(int h);
     void updateHeight();
-    int front();
-    void push_back(int x);
+    size_t front();
+    void push_back(size_t x);
     void pop_back();
-    std::list<int>& getIndexList();
+    std::vector<size_t> * getIndexList();
     void printList();
 };
